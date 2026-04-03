@@ -1,28 +1,53 @@
-<div id="chat-container" style="background: #000; border: 2px solid white; padding: 10px; margin-top: 20px;">
-    <div id="chat-box" style="height: 100px; overflow-y: auto; color: #0f0; font-family: monospace;">
-        Manbobobo: Ciao! Vuoi sapere dove nascondo gli spaghetti?
-    </div>
-    <input type="text" id="user-input" placeholder="Chiedi a Manbobobo..." style="width: 70%;">
-    <button onclick="askManbobobo()">Invia</button>
-</div>
-
 <script>
 function askManbobobo() {
-    const input = document.getElementById('user-input').value.toLowerCase();
+    const inputField = document.getElementById('user-input');
+    const input = inputField.value.trim();
     const chatBox = document.getElementById('chat-box');
-    let risposta = "Miao? (Manbobobo ti guarda confuso)";
 
-    if(input.includes("spaghetti")) {
-        risposta = "Manbobobo: Non li troverai mai! Sono nella mia pancia cicciotta!";
-    } else if(input.includes("ciao")) {
-        risposta = "Manbobobo: Ciao umano! Hai portato dei panini?";
-    } else if(input.includes("roblox")) {
-        risposta = "Manbobobo: Oof! Sto camminando su due gambe nel metaverso!";
+    if (input === "") return;
+
+    // Mostra la tua domanda nella chat
+    chatBox.innerHTML += `<p style="margin: 5px 0;"><strong>Tu:</strong> ${input}</p>`;
+
+    let risposta = "";
+
+    // LOGICA DI MANBOBOBO
+    // 1. La domanda specifica sul pane
+    if (input === "你把我的面包藏哪了") {
+        risposta = "嘎嘎嘎嘎嘎嘎不知道嘿嘿";
+    } 
+    // 2. Reazione agli spaghetti o panini
+    else if (input.toLowerCase().includes("spaghetti") || input.toLowerCase().includes("panini") || input.toLowerCase().includes("pasta")) {
+        risposta = "Manbobobo: *Gnam gnam*... Erano squisiti! Ne vuoi un po'? No, scherzavo, sono tutti miei!";
+    }
+    // 3. Reazione a Roblox
+    else if (input.toLowerCase().includes("roblox")) {
+        risposta = "Manbobobo: Sto cercando di glitchare nel sistema per avere spaghetti infiniti!";
+    }
+    // 4. RISPOSTA DI DEFAULT (Se non capisce o non sa rispondere)
+    else {
+        risposta = "曼波?";
     }
 
-    chatBox.innerHTML += "<div>Tu: " + input + "</div>";
-    chatBox.innerHTML += "<div>" + risposta + "</div>";
-    document.getElementById('user-input').value = ""; // Pulisce l'input
+    // Effetto "caricamento" della risposta
+    setTimeout(() => {
+        chatBox.innerHTML += `<p style="color: #f1c40f; margin: 5px 0;"><strong>Manbobobo:</strong> ${risposta}</p>`;
+        
+        // Scroll automatico verso il basso per vedere l'ultima risposta
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 400);
+
+    // Pulisce il campo di testo
+    inputField.value = "";
+}
+
+// Funzione per inviare con il tasto Invio
+document.getElementById("user-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        askManbobobo();
+    }
+});
+</script>
 }
 </script>
 </html>
