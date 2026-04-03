@@ -48,7 +48,3 @@ document.getElementById("user-input").addEventListener("keypress", function(even
     }
 });
 </script>
-}
-</script>
-</html>
-</html>
