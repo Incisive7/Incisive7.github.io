@@ -3,74 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutto sulle Capre</title>
+    <title>Manbobobo - Il Gatto Bipede</title>
     <style>
+        :root {
+            --cat-black: #1a1a1a;
+            --eye-white: #ffffff;
+            --accent-color: #f1c40f;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f7f6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #2e7d32;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2c3e50;
             color: white;
-            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: var(--cat-black);
+            border: 3px solid var(--eye-white);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
             text-align: center;
-            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .content {
-            background: white;
-            padding: 20px;
+
+        .avatar-container {
+            background: #333;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 2px dashed var(--eye-white);
+        }
+
+        /* Rappresentazione stilizzata degli occhi di Manbobobo */
+        .eye {
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            border: 4px solid white;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .tag {
+            background: var(--eye-white);
+            color: black;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .description {
+            margin-top: 25px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .stats-list {
+            list-style: none;
+            padding: 0;
             margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+
+        .stats-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
         }
-        .stats {
-            background: #e8f5e9;
-            padding: 15px;
-            border-left: 5px solid #2e7d32;
+
+        .stats-list li::before {
+            content: "🐾";
+            position: absolute;
+            left: 0;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>La Maestosa Capra</h1>
-        <p>L'animale più testardo e simpatico del mondo</p>
-    </header>
-
-    <div class="content">
-        <h2>Descrizione</h2>
-        <p>La capra (<i>Capra hircus</i>) è un mammifero ruminante, famoso per la sua agilità e la sua incredibile capacità di scalare pareti quasi verticali.</p>
+    <div class="card">
+        <div class="avatar-container">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
         
-        <img src="https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=800&q=80" alt="Foto di una capra simpatica">
-
-        <h3>Caratteristiche principali</h3>
-        <ul class="stats">
-            <li><strong>Pupille:</strong> Rettangolari (per un campo visivo più ampio).</li>
-            <li><strong>Dieta:</strong> Erbivora (mangiano di tutto, ma non le lattine, è un mito!).</li>
-            <li><strong>Talento speciale:</strong> Parkour naturale.</li>
-        </ul>
-
-        <h3>Curiosità</h3>
-        <p>Sapevi che le capre sono state tra i primi animali ad essere addomesticati dall'uomo circa 10.000 anni fa? Sono anche molto intelligenti e capaci di risolvere complessi enigmi per raggiungere il cibo.</p>
+        <span class="tag">PERSONAGGIO ANIMATO</span>
+        <h1>Manbobobo</h1>
+        
+        <div class="description">
+            <p><strong>Manbobobo</strong> non è un gatto come tutti gli altri. È un piccolo eroe tascabile dal pelo nerissimo e dalla silhouette... morbidamente rotonda.</p>
+            
+            <ul class="stats-list">
+                <li><strong>Statura:</strong> Estremamente piccolo e "ciciotto".</li>
+                <li><strong>Portamento:</strong> Cammina orgogliosamente su due gambe.</li>
+                <li><strong>Sguardo:</strong> Occhi neri profondi con un inconfondibile bordo bianco.</li>
+                <li><strong>Colore:</strong> Nero assoluto, come un'ombra simpatica.</li>
+            </ul>
+        </div>
     </div>
 
     <footer>
-        <p style="text-align: center; font-size: 0.8rem; margin-top: 20px;">
-            Creato con ❤️ per la comunità delle capre su GitHub.
-        </p>
+        Progetto Manbobobo - Creato per GitHub
     </footer>
 
 </body>
 </html>
-</body>
 </html>
