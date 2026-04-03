@@ -1,50 +1,83 @@
-<script>
-function askManbobobo() {
-    const inputField = document.getElementById('user-input');
-    const input = inputField.value.trim();
-    const chatBox = document.getElementById('chat-box');
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manbobobo AI</title>
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; text-align: center; }
+        .box { border: 2px solid white; padding: 20px; margin: 20px auto; max-width: 400px; border-radius: 10px; }
+        #chat { height: 200px; overflow-y: auto; background: #000; padding: 10px; text-align: left; margin-bottom: 10px; }
+        input { width: 70%; padding: 10px; }
+        button { padding: 10px; cursor: pointer; }
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
 
-    if (input === "") return;
+    <h1>Manbobobo World</h1>
 
-    // Mostra la tua domanda nella chat
-    chatBox.innerHTML += `<p style="margin: 5px 0;"><strong>Tu:</strong> ${input}</p>`;
+    <nav>
+        <button onclick="cambia('roblox')">ROBLOX</button>
+        <button onclick="cambia('sabi')">SABIHAOZI</button>
+    </nav>
 
-    let risposta = "";
-
-    // LOGICA DI MANBOBOBO
-    // 1. La domanda specifica sul pane
-    if (input === "你把我的面包藏哪了") {
-        risposta = "嘎嘎嘎嘎嘎嘎不知道嘿嘿";
-    } 
-    // 2. Reazione agli spaghetti o panini
-    else if (input.toLowerCase().includes("spaghetti") || input.toLowerCase().includes("panini") || input.toLowerCase().includes("pasta")) {
-        risposta = "Manbobobo: *Gnam gnam*... Erano squisiti! Ne vuoi un po'? No, scherzavo, sono tutti miei!";
-    }
-    // 3. Reazione a Roblox
-    else if (input.toLowerCase().includes("roblox")) {
-        risposta = "Manbobobo: Sto cercando di glitchare nel sistema per avere spaghetti infiniti!";
-    }
-    // 4. RISPOSTA DI DEFAULT (Se non capisce o non sa rispondere)
-    else {
-        risposta = "曼波?";
-    }
-
-    // Effetto "caricamento" della risposta
-    setTimeout(() => {
-        chatBox.innerHTML += `<p style="color: #f1c40f; margin: 5px 0;"><strong>Manbobobo:</strong> ${risposta}</p>`;
+    <div id="roblox" class="visible">
+        <h2>Manbobobo Roblox 🐾</h2>
+        <p>Sto nascondendo spaghetti e panini... 🍝🥪</p>
         
-        // Scroll automatico verso il basso per vedere l'ultima risposta
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }, 400);
+        <div class="box">
+            <div id="chat">
+                <p style="color:yellow">Manbobobo: 曼波?</p>
+            </div>
+            <input type="text" id="domanda" placeholder="Scrivi qui...">
+            <button onclick="parla()">Invia</button>
+        </div>
+    </div>
 
-    // Pulisce il campo di testo
-    inputField.value = "";
-}
+    <div id="sabi" class="hidden">
+        <h2>Manbobobo Sabihaozi ⭐</h2>
+        <p>PATRICK STAR HA FAME!! 🍕🍔🍟</p>
+    </div>
 
-// Funzione per inviare con il tasto Invio
-document.getElementById("user-input").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        askManbobobo();
-    }
-});
-</script>
+    <script>
+        // Funzione per cambiare sezione
+        function cambia(id) {
+            document.getElementById('roblox').className = 'hidden';
+            document.getElementById('sabi').className = 'hidden';
+            document.getElementById(id).className = 'visible';
+        }
+
+        // Funzione per la chat
+        function parla() {
+            var box = document.getElementById('chat');
+            var input = document.getElementById('domanda');
+            var testo = input.value.trim();
+
+            if(testo === "") return;
+
+            // Aggiungi testo utente
+            box.innerHTML += "<div><b>Tu:</b> " + testo + "</div>";
+
+            var risposta = "曼波?";
+
+            // Controllo cinese
+            if(testo === "你把我的面包藏哪了") {
+                risposta = "嘎嘎嘎嘎嘎嘎不知道嘿嘿";
+            } 
+            // Controllo spaghetti
+            else if(testo.toLowerCase().includes("spaghetti")) {
+                risposta = "Manbobobo: Sono nella scatola segreta! 📦";
+            }
+
+            // Risposta del gatto
+            setTimeout(function() {
+                box.innerHTML += "<div style='color:yellow'><b>Manbobobo:</b> " + risposta + "</div>";
+                box.scrollTop = box.scrollHeight;
+            }, 300);
+
+            input.value = "";
+        }
+    </script>
+</body>
+</html>
