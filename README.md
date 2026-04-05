@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pase Giovanni - Officina e Servizi Auto</title>
+    <title>Pase Giovanni - Chat AI e Servizi Auto</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,12 +16,12 @@
         header {
             background-color: #007bff;
             color: white;
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             letter-spacing: 2px;
         }
         .container {
@@ -57,13 +57,19 @@
             padding: 20px;
             margin-top: 40px;
         }
+        /* Stile Chatbot */
         .chat-container {
-            max-width: 400px;
+            max-width: 500px;
             margin: 30px auto;
             padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
             background: #f9f9f9;
+        }
+        .chat-container h3 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 15px;
         }
         .chat-container input {
             width: 100%;
@@ -81,6 +87,9 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .chat-container button:hover {
+            background: #0056b3;
+        }
         .chat-container p {
             margin-top: 10px;
             background: #eef2f7;
@@ -91,6 +100,14 @@
     </style>
 </head>
 <body>
+
+<!-- Chatbot AI in cima -->
+<div class="chat-container">
+    <h3>Chat con l’AI di Pase Giovanni</h3>
+    <input id="input" placeholder="Scrivi la tua domanda...">
+    <button id="sendBtn">Invia</button>
+    <p id="risposta"></p>
+</div>
 
 <header>
     <h1>Pase Giovanni - Officina e Centro Servizi Auto</h1>
@@ -104,7 +121,8 @@
         <p>
             La storia della nostra officina inizia con la passione per i motori e l’esperienza di Giovanni Pase.
             Fondata oltre 70 anni fa, oggi l’azienda continua l’eredità del fondatore mettendo la soddisfazione
-            dei clienti al primo posto e unendo tradizione e tecnologia moderna. :contentReference[oaicite:2]{index=2}
+            dei clienti al primo posto e unendo tradizione e tecnologia moderna. 
+            <a href="https://pasegiovanni.it/chi-siamo/?utm_source=chatgpt.com" target="_blank">Leggi di più</a>
         </p>
     </section>
 
@@ -119,24 +137,14 @@
             <li>Servizio gommista e assistenza tecnica</li>
             <li>Pulizia strade e gestione sicurezza su strada</li>
         </ul>
-        <p>Questi servizi professionali sono progettati per rispondere a tutte le esigenze di mobilità del cliente. :contentReference[oaicite:3]{index=3}</p>
     </section>
 
     <section class="section">
-        <h2>Informazioni di Contatto</h2>
+        <h2>Contatti</h2>
         <p class="contact-info">Tel: +39 0438 35562</p>
         <p class="contact-info">Email: info@pasegiovanni.it</p>
         <p>Indirizzo: Via dei Zoppas, 24, 31015 Conegliano (TV), Italia</p>
-        <p>Orari: Lun–Ven 08:00–12:00 / 12:00–18:00</p> :contentReference[oaicite:4]{index=4}
-    </section>
-
-    <section class="section">
-        <h2>Chat con l’AI</h2>
-        <div class="chat-container">
-            <input id="input" placeholder="Scrivi qui la tua domanda...">
-            <button onclick="invia()">Invia</button>
-            <p id="risposta"></p>
-        </div>
+        <p>Orari: Lun–Ven 08:00–12:00 / 12:00–18:00</p>
     </section>
 
 </div>
@@ -146,9 +154,11 @@
 </footer>
 
 <script>
-async function invia() {
-    const msg = document.getElementById("input").value;
-    if(msg.trim() === "") return;
+// Funzione chat AI funzionante
+const sendBtn = document.getElementById("sendBtn");
+sendBtn.addEventListener("click", async () => {
+    const msg = document.getElementById("input").value.trim();
+    if(msg === "") return;
 
     const res = await fetch("https://gklhufvqtufghurhscqo.supabase.co/functions/v1/chat", {
         method: "POST",
@@ -158,7 +168,8 @@ async function invia() {
 
     const data = await res.json();
     document.getElementById("risposta").innerText = data.reply;
-}
+    document.getElementById("input").value = "";
+});
 </script>
 
 </body>
